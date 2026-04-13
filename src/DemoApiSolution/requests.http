@@ -1,0 +1,9 @@
+GET https://localhost:1338/weatherforecast
+
+### 
+
+GET https://localhost:1338/weatherforecast/records?zip=44107
+
+
+###
+GET https://localhost:1338/openapi/v1.json
