@@ -30,6 +30,7 @@
 ```http
 POST https://localhost:1338/vendors
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN1ZSIsInN1YiI6InN1ZSIsImp0aSI6IjNhMDNhNjFjIiwicm9sZSI6WyJNYW5hZ2VyIiwiU29mdHdhcmVDZW50ZXIiXSwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6MTMzOCIsIm5iZiI6MTc3NjI4NDQ5MywiZXhwIjoxNzg0MTQ2ODkzLCJpYXQiOjE3NzYyODQ0OTUsImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.H6kqj-A9RsrCuQYY9vqckxXACyAMYjmZRbCEUHVbNZ0
 
 {
     "name": "JasperFx",
@@ -116,3 +117,37 @@ GET https://localhost:1338/vendors
 ```
 
 ### Policies
+
+
+### What is the Body of the POST and what is the resource for adding a catalog item?
+
+```http
+POST https//localhost:1338/vendor/{id}/catalog
+Content-Type: application/json
+
+{
+  "name": "Visual Studio Code",
+  "description": "Code editor",
+  "version": "182.3.1"
+}
+```
+
+
+GET  https//localhost:1338/vendor/{id}/catalog
+
+
+"Employees at the company need to see a list of supported software"
+
+GET https://localhost:1338/catalog 
+
+200 Ok
+
+[
+    {
+        id:"83983",
+        title: "Visual Studio Code",
+        vendor: "Microsoft",
+        version: "182.3.1"
+    }
+]
+

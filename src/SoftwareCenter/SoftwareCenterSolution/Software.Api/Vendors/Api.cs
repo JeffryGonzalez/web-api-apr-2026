@@ -1,4 +1,5 @@
 ﻿using Marten;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Software.Api.Vendors.Data;
 using Software.Api.Vendors.Models;
@@ -7,6 +8,7 @@ using Software.Api.Vendors.Services;
 namespace Software.Api.Vendors;
 
 [ApiController]
+[Authorize] // Do not let any method on this controller get called unless we have verified their identity through a trusted identity provider
 public class Api(IManageVendors vendorData) : ControllerBase
 {
 
@@ -31,9 +33,11 @@ public class Api(IManageVendors vendorData) : ControllerBase
         return Ok(entity);
     }
 
+    [Authorize(Policy = "SoftwareCenterManager")]
     [HttpPost("/vendors")] // Is not safe, not idempotent, and not cacheable*
     public async Task<ActionResult> AddVendorAsync([FromBody] Vendor request)
     {
+        
         // 1. Validation - field level - all the stuff there, in the right "range of acceptable values"
         // 2. More (deep) validation - TODO: We probably shouldn't allow multiple vendors with the same name.
         // 3. If 1 or 2 fails, return a 400, maybe with some error information.

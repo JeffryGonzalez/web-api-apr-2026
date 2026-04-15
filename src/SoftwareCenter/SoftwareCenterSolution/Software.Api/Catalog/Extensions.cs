@@ -13,7 +13,7 @@ public static class Extensions
             group.MapGet("", () => Results.Ok(new[] { "item1", "item2", "item3" }));
             group.MapGet("{id}", (int id) => Results.Ok($"You requested item {id}"));
 
-            group.MapPost("", (string item) => Results.Ok($"You posted {item}"));
+            group.MapPost("", (string item, HttpContext context) => Results.Ok($"You posted {item}"));
             return builder;
         }
     }

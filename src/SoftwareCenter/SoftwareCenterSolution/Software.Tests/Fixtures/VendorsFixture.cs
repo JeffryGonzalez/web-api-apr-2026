@@ -56,9 +56,9 @@ public class VendorsUnitIntegrationTest : VendorsFixture
 
     protected override void ConfigureTestServices(IServiceCollection services)
     {
-        var fakeUserThing = Substitute.For<IProvideTheCallingUser>();
-        fakeUserThing.GetSubClaim().Returns("boba-fett");
-        services.AddScoped<IProvideTheCallingUser>(_ => fakeUserThing);
+        //var fakeUserThing = Substitute.For<IProvideTheCallingUser>();
+        //fakeUserThing.GetSubClaim().Returns("boba-fett");
+        //services.AddScoped<IProvideTheCallingUser>(_ => fakeUserThing);
     }
 }
 

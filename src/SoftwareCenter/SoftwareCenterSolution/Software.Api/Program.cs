@@ -15,6 +15,16 @@ builder.AddServiceDefaults();
 // Really only has to do with minimal APIs
 builder.Services.AddValidation();
 builder.Services.AddBunny();
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+   // options.MapInboundClaims = false;
+});
+
+builder.Services.AddAuthorizationBuilder().AddPolicy("SoftwareCenterManager", policy =>
+    {
+        policy.RequireRole("SoftwareCenter");
+        policy.RequireRole("Manager");
+    });
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -43,7 +53,8 @@ builder.Services.AddMarten(options =>
 builder.Services.AddScoped<IManageVendors, PostgresMartenVendorData>();
 
 //builder.Services.AddSingleton<SomeType>(); 
-
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IProvideTheCallingUser, HttpContextCallingUserProvider>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,10 +62,10 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 //app.MapPost("/test", (Vendor vendor) => Results.Ok(vendor));
 app.MapCatalog();
 app.MapControllers();
