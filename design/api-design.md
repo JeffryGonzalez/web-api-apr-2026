@@ -45,7 +45,7 @@ Content-Type: application/json
 ```
 
 ```http
-GET https://localhost:1338/vendors/143a4802-e3d3-46fe-9167-
+GET https://localhost:1338/vendors/d8a7d415-8375-4f22-97b3-e760c87f59ba
 ```
 
 

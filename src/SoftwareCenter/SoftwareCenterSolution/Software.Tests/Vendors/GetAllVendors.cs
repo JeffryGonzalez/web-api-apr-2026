@@ -20,6 +20,6 @@ public class GetAllVendors(VendorsFixture fixture)
 
          var vendors = result.ReadAsJson<List<VendorSummaryItem>>();
          Assert.NotNull(vendors);
-         //Assert.NotEmpty(vendors);
+        Assert.Empty(vendors);
     }
 }

@@ -5,7 +5,7 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace Software.Api.Vendors.Services;
 
-public class PostgresMartenVendorData(IDocumentSession session) : IManageVendors
+public class PostgresMartenVendorData(IDocumentSession session, IProvideTheCallingUser callingUser) : IManageVendors
 {
     public async Task<IReadOnlyList<VendorSummaryItem>> GetVendorSummariesAsync(CancellationToken token)
     {
@@ -26,7 +26,7 @@ public class PostgresMartenVendorData(IDocumentSession session) : IManageVendors
             Id = Guid.NewGuid(),
             Created = DateTimeOffset.UtcNow,
 
-            CreatedBy = "TODO: Get the user from the auth context",
+            CreatedBy = callingUser.GetSubClaim(),
             Name = request.Name,
             Site = request.Site,
             PointOfContact = request.PointOfContact

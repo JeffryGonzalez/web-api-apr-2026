@@ -1,4 +1,6 @@
 using Marten;
+using Software.Api;
+using Software.Api.Catalog;
 using Software.Api.Vendors.Models;
 using Software.Api.Vendors.Services;
 
@@ -12,6 +14,7 @@ builder.AddServiceDefaults();
 // Need this for the source generated validation. 
 // Really only has to do with minimal APIs
 builder.Services.AddValidation();
+builder.Services.AddBunny();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -53,6 +56,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 //app.MapPost("/test", (Vendor vendor) => Results.Ok(vendor));
+app.MapCatalog();
 app.MapControllers();
 app.MapDefaultEndpoints();
 app.Run();

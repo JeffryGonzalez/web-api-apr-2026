@@ -2,7 +2,7 @@
 
 namespace Software.Api.Vendors.Models;
 
-public record VendorCreateResponse 
+public record VendorCreateResponse
 {
     public required Guid Id { get; init; }
     public required DateTimeOffset Created { get; init; }

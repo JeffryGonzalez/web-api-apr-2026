@@ -2,5 +2,6 @@
   <Project Path="AppHost/AppHost.csproj" />
   <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
   <Project Path="Software.Api/Software.Api.csproj" />
+  <Project Path="Software.SystemsIntegration/Software.SystemsIntegration.csproj" Id="9d481b07-f00f-49c4-9596-85f22812f520" />
   <Project Path="Software.Tests/Software.Tests.csproj" />
 </Solution>
