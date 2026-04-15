@@ -4,7 +4,7 @@ namespace Software.Api.Vendors.Models;
 
 public record Vendor : IValidatableObject
 {
-    [MinLength(3), MaxLength(20)]
+    [MinLength(3), MaxLength(20)] // These are provided by a library so they can be recognized by another tool
     public required string Name { get; init; }
     [Url]
     public required string Site { get; init; }

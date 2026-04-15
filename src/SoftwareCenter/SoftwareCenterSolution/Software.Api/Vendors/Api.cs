@@ -13,7 +13,10 @@ public class Api(IManageVendors vendorData) : ControllerBase
     [HttpGet("/vendors")]
     public async Task<ActionResult> GetVendors(CancellationToken token)
     {
-       IReadOnlyList<VendorSummaryItem> entities = await vendorData.GetVendorSummariesAsync(token);
+
+        // DO NOT DO THIS. THIS IS CLASSROOM CODE. EVEN IF JEFF JOKES AND SAYS YOU SHOULD DO THIS, NO NOT.
+        await Task.Delay(2000,token);
+        IReadOnlyList<VendorSummaryItem> entities = await vendorData.GetVendorSummariesAsync(token);
         return Ok(entities);
     }
 
@@ -43,7 +46,9 @@ public class Api(IManageVendors vendorData) : ControllerBase
         // 9. Return a copy of what they would get if they did a get on the Location header.
 
 
-        VendorCreateResponse response = await vendorData.AddVendorAsync(request);
+        var response = await vendorData.AddVendorAsync(request);
+        
+
         return Created($"/vendors/{response.Id}", response);
     }
 }

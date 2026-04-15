@@ -6,5 +6,8 @@ public class UnitTest1
     public void Test1()
     {
         Assert.True(true);
+        int a = 10; int b = 20;
+        int answer = a + b;
+        Assert.Equal(30, answer);
     }
 }

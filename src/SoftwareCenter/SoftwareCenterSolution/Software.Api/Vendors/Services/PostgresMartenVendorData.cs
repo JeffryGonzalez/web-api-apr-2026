@@ -9,6 +9,7 @@ public class PostgresMartenVendorData(IDocumentSession session) : IManageVendors
 {
     public async Task<IReadOnlyList<VendorSummaryItem>> GetVendorSummariesAsync(CancellationToken token)
     {
+        
         return await session.Query<VendorEntity>()
              .Select(e => new VendorSummaryItem
              {

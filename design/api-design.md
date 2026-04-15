@@ -48,6 +48,10 @@ Content-Type: application/json
 GET https://localhost:1338/vendors/143a4802-e3d3-46fe-9167-
 ```
 
+
+```http
+GET https://localhost:1338/vendors
+```
 ## Representations
 
 
